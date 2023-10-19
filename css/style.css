@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: url() rgba(0, 0, 0, 0.8);
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+}
+
+section{
+    padding: 50px;
+}
+
+.container{
+    width: 1000px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*====== HEADER ======*/
+
+.main-header{
+	position: fixed;
+	width: 100%;
+    background-color: rgba(50, 154, 228, 0.8)
+}
+
+.header-flex{
+	display: flex;
+	height: 50px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-flex .logo h1{
+    font-family: 'Alumni Sans', sans-serif;
+    color: white;
+    font-size: 40px;
+}
+/* img{
+	max-width: 100%;
+	display: block;
+}
+
+.logo{
+	width: 200px;
+}
+
+.burger{
+	display: none;
+} */
+
+.nav-list{
+	list-style: none;
+	display: flex;
+	gap: 40px;
+}
+
+.nav-list a{
+	font-family: 'Quicksand', sans-serif;
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.nav-list a:hover{
+	text-shadow: 0 0 4px cyan;
+}
+
+/*====main-banner===*/
+
+.main-banner{
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.textbox h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    color: white;  
+}
+
+.textbox h4{
+    font-family: 'Alumni Sans', sans-serif;
+    font-style: italic;
+    color: white;
+    font-size: 18px;
+} 
+
+.exercise h1{
+    font-family: 'Alumni Sans', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.exercise-flex{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;
+}
+
+.exercise .card{
+    background-color: rgba(50, 154, 228, 0.8);
+	padding: 30px 10px;
+	border-radius: 5px;
+    padding: 20px 40px;
+    line-height: 1.5;     
+}
+
+li{
+    color: white;
+}
+
+li:hover{
+    color: yellow;
+}
+
+a{  
+    font-family: 'Quicksand', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+
+a:hover{
+    color: yellow;
+    text-shadow: 0 0 4px white;
+}
+
+.back-btn{
+    text-align: center;
+}
+
+.bk-btn{
+    display: inline-block;
+    background-color: yellow;
+    color: rgb(50, 154, 228);
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.bk-btn:hover{
+    background-color: rgb(50, 154, 228);
+    color: yellow;
+}
+
