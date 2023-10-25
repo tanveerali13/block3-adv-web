@@ -36,13 +36,18 @@ class Car
     {
         if ($startStop == 'start') {
             $this->engineStartStop = 1;
-            $this->moveForward();
+        } else if ($startStop == 'stop') {
+            $this->engineStartStop = 0;
         }
     }
 
-    private function moveForward()
+    public function moveForward()
     {
-        echo "Car is moving forward";
+        if ($this->engineStartStop == 1) {
+            echo "Car is moving forward";
+        } else {
+            echo "Start the car first";
+        }
     }
 }
 
@@ -56,5 +61,9 @@ echo "<br>";
 $car1->setEngineStartStop('start');
 echo "<br>";
 echo $car1->engineStartStop;
-
+echo "<br>";
+$car1->moveForward();
+$car1->setEngineStartStop('stop');
+echo "<br>";
+$car1->moveForward();
 ?>
