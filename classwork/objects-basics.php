@@ -1,10 +1,12 @@
 <?php
+
+ini_set("display_errors", 1);
 class Car
 {
     private $name;
     private $model;
 
-    private $engineStartStop;
+    public $engineStartStop = 0;
 
     private $stopEngine;
 
@@ -30,10 +32,10 @@ class Car
         return $this->model;
     }
 
-    public function setEngineStartStop($engineStartStop)
+    public function setEngineStartStop($startStop)
     {
-        if ($engineStartStop == 'start') {
-            $this->engineStartStop = $engineStartStop;
+        if ($startStop == 'start') {
+            $this->engineStartStop = 1;
             $this->moveForward();
         }
     }
@@ -52,5 +54,7 @@ echo "<br>";
 echo $car1->getModel();
 echo "<br>";
 $car1->setEngineStartStop('start');
+echo "<br>";
+echo $car1->engineStartStop;
 
 ?>
