@@ -1,5 +1,9 @@
-# adv-web-prog
+# ADVANCED WEB PROGRAMMING
 
-Block 3- Advanced Web Programming Course
+## List of folders and files
 
-Test
+- assets (Folder) :
+- classwork (Folder) :
+- css (Folder) :
+- exercises (Folder) :
+- index.html (File)
