@@ -4,66 +4,82 @@ ini_set("display_errors", 1);
 class Car
 {
     private $name;
-    private $model;
+    private $year;
+    private $isRunning;
+    private $fuelLevel;
 
-    public $engineStartStop = 0;
-
-    private $stopEngine;
-
-    private $refuel;
-
-    public function setName($name)
+    public function __construct($name, $year)
     {
         $this->name = $name;
+        $this->year = $year;
+        $this->isRunning = false;
+        $this->fuelLevel = 100;
     }
 
-    public function setModel($model)
+    public function status()
     {
-        $this->model = $model;
+        echo "Car name = $this->name <br>
+              Make year = $this->year <br>
+              Fuel level = $this->fuelLevel <br>
+              The car is not running <br>";
+
     }
 
-    public function getName()
+    public function start()
     {
-        return $this->name;
-    }
-
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    public function setEngineStartStop($startStop)
-    {
-        if ($startStop == 'start') {
-            $this->engineStartStop = 1;
-        } else if ($startStop == 'stop') {
-            $this->engineStartStop = 0;
-        }
-    }
-
-    public function moveForward()
-    {
-        if ($this->engineStartStop == 1) {
-            echo "Car is moving forward";
+        if (!$this->isRunning) {
+            $this->turnOnKey();
+            $this->isRunning = true;
+            echo "Car is running <br>";
         } else {
-            echo "Start the car first";
+            echo "Turn the key to start. <br>";
         }
     }
+
+    private function turnOnKey()
+    {
+        echo "Key turned ON <br>";
+        $this->accelerate();
+    }
+
+    private function accelerate()
+    {
+        echo "Accelerator pressed! <br>";
+    }
+
+    public function stop()
+    {
+        if ($this->isRunning) {
+            $this->brake();
+            $this->isRunning = false;
+            echo "The car stopped <br>";
+            $this->turnOffKey();
+        } else {
+            echo "Car is alredy on halt. Start the car first. <br>";
+        }
+    }
+
+    private function brake()
+    {
+        echo "Brakes applied! <br>";
+    }
+
+    private function turnOffKey()
+    {
+        echo "Key turned OFF <br>";
+    }
+
 }
 
-$car1 = new Car();
-$car1->setName('Mazda3');
-$car1->setModel('2011');
-echo $car1->getName();
-echo "<br>";
-echo $car1->getModel();
-echo "<br>";
-$car1->setEngineStartStop('start');
-echo "<br>";
-echo $car1->engineStartStop;
-echo "<br>";
-$car1->moveForward();
-$car1->setEngineStartStop('stop');
-echo "<br>";
-$car1->moveForward();
-?>
+$car1 = new Car('Mazda3', '2011');
+$car1->status();
+$car1->start();
+$car1->stop();
+$car1->stop();
+$car1->start();
+
+$car2 = new Car('Toyota', '2020');
+$car2->status();
+$car2->start();
+$car2->stop();
+
