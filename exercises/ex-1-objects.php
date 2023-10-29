@@ -76,7 +76,7 @@ class Car
             $this->fuelLevel = 100;
             echo "Refuel Complete <br>";
         } else {
-            echo "Tank is already full";
+            echo "Tank is already full <br>";
         }
     }
 
@@ -94,5 +94,8 @@ $car1->reFuel();
 
 
 $car2 = new Car('Toyota', '2020');
+$car2->start();
+$car2->refuel();
+
 
 
