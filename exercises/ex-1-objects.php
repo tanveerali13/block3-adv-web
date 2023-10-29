@@ -30,9 +30,10 @@ class Car
         if (!$this->isRunning) {
             $this->turnOnKey();
             $this->isRunning = true;
-            echo "Car is running <br>";
+            $this->fuelLevel = 80;
+            echo "Car is running, fuel level = $this->fuelLevel <br>";
         } else {
-            echo "Turn the key to start. <br>";
+            echo "Car is already running. <br>";
         }
     }
 
@@ -69,17 +70,29 @@ class Car
         echo "Key turned OFF <br>";
     }
 
+    public function reFuel()
+    {
+        if ($this->fuelLevel < 100) {
+            $this->fuelLevel = 100;
+            echo "Refuel Complete <br>";
+        } else {
+            echo "Tank is already full";
+        }
+    }
+
 }
 
 $car1 = new Car('Mazda3', '2011');
-$car1->status();
+$car1->start();
 $car1->start();
 $car1->stop();
 $car1->stop();
-$car1->start();
+$car1->reFuel();
+$car1->reFuel();
+
+
+
 
 $car2 = new Car('Toyota', '2020');
-$car2->status();
-$car2->start();
-$car2->stop();
+
 
