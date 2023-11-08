@@ -2,14 +2,14 @@
 
 ### After Normalization 
 
-| staffNo    | patientNo     | appointment_date  | appointment_time | surgeryNo  |    
-| ---------- | ------------- | ----------------- | ---------------- | ---------- |
-| S1011      | P100          | 12-Aug-03         | 10.00            |  S10       |
-| S1011      | P105          | 13-Aug-03         | 12.00            |  S15       |
-| S1024      | P108          | 12-Sept-03        | 10.00            |  S10       |
-| S1024      | P108          | 14-Sept-03        | 10.00            |  S10       |
-| S1032      | P105          | 14-Oct-03         | 16.00            |  S15       |
-| S1032      | P100          | 15-Oct-03         | 18.00            |  S13       |
+| staffNo    | patientNo     | appointment date/time  | surgeryNo   |    
+| ---------- | ------------- | ---------------------  | ----------- |
+| S1011      | P100          | 12-Aug-03  10.00       |   S10       |
+| S1011      | P105          | 13-Aug-03  12.00       |   S15       |
+| S1024      | P108          | 12-Sept-03 10.00       |   S10       |
+| S1024      | P108          | 14-Sept-03 10.00       |   S10       |
+| S1032      | P105          | 14-Oct-03  16.00       |   S15       |
+| S1032      | P100          | 15-Oct-03  18.00       |   S13       |
 
 | staffNo    | dentistName   |      
 | ---------- | ------------- |
@@ -88,6 +88,8 @@
 
 # TABLE 4
 
+### Problem
+
 ### After Normalization
 
 | GenreID     | Genre                   |      
@@ -119,19 +121,27 @@
 ### After Normalization
 
 | UnitID    |  StudentID         |  Date        |  TutorID  |  
-| --------- | ------------------ | ------------ | --------- | 
+| --------- | -----------------  | ------------ | --------- | 
 | U1        | St1                | 23.02.03     | Tut1      |
 | U2        | St1                | 18.11.02     | Tut3      |
 | U1        | St4                | 23.02.03     | Tut1      |
 | U5        | St2                | 05.05.03     | Tut3      |
 | U4        | St2                | 04.07.03     | Tut5      |
 
-| UnitID    |  Topic             |  Room              |  Book           |  
-| --------- | ------------------ | ------------------ | --------------- |
-| U1        | GMT                | 629                | Deumlich        |
-| U2        | Gln                | 631                | Zehnder         |
-| U5        | PhF                | 632                | Dummlers        |
-| U4        | AVQ                | 621                | SwissTopo       |
+| UnitID    |  StudentID        |  Grade   | 
+| --------- | ----------------- | -------- | 
+| U1        | St1               | 4.7      |
+| U2        | St1               | 5.1      |
+| U1        | St4               | 4.3      |
+| U5        | St2               | 4.9      |
+| U4        | St2               | 5.0      |
+
+| UnitID    |  Topic            |  Room              |  Book           |  
+| --------- | ----------------- | ------------------ | --------------- |
+| U1        | GMT               | 629                | Deumlich        |
+| U2        | Gln               | 631                | Zehnder         |
+| U5        | PhF               | 632                | Dummlers        |
+| U4        | AVQ               | 621                | SwissTopo       |
 
 | TutorID    |  TutEmail          |   
 | ---------  | ------------------ |
