@@ -1,0 +1,16 @@
+@startuml
+
+class Animal{
+    makesound()
+}
+class Cat extends Animal{
+    makesound()
+}
+
+class Vehicle{
+    drive()
+}
+class Car extends Vehicle{
+    drive()
+}
+@enduml
