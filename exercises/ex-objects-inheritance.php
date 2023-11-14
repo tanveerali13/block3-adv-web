@@ -1,13 +1,7 @@
-<!-- ### PROBLEM 1 ###
-     Write a php class called Animal with a method called makeSound(). Create a subclass called Cat that overrides the makeSound() method to bark.
-    
+<!-- 
     
 
-    ### PROBLEM 4 ###
-    Write a php class called Employee with methods called work() and getSalary(). Create a subclass called HRManager that overrides the work() method and adds a new method called addEmployee().
 
-    ### PROBLEM 5 ###
-    Write a php class known as "BankAccount" with methods called deposit() and withdraw(). Create a subclass called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred.
 
     ### PROBLEM 6 ###
     Write a php class called Animal with a method named move(). Create a subclass called Cheetah that overrides the move() method to run.
@@ -29,13 +23,13 @@
 
     class Animal{
         public function makeSound(){
-            echo 'sound';
+            echo 'Animal Sound </br>';
         }
     }
 
     class Cat extends Animal{
         public function makeSound(){
-            echo 'Meow';
+            echo 'Meow </br>';
         }
     }
 
@@ -52,13 +46,13 @@ $cat->makeSound();
 
     class Vehicle{
         public function drive(){
-            echo 'driving';
+            echo "driving </br>";
         }
     }
 
     class Car extends Vehicle{
         public function drive(){
-            echo 'Repairing a car';
+            echo "Repairing a car </br>";
         }
     }
 
@@ -74,7 +68,7 @@ $cat->makeSound();
 
 
         public function getArea(){
-            echo 'Generic Area';
+            echo "Generic Area </br>";
         }
     }
     class Rectangle extends Shape{
@@ -88,6 +82,7 @@ $cat->makeSound();
         }
         public function getArea(){
             echo "Rectangle Area =". $this->width * $this->length;
+            echo "</br>";
         }
     }
 
@@ -97,8 +92,84 @@ $cat->makeSound();
     $rectangleArea = new Rectangle(5,10);
     $rectangleArea->getArea();
 
+?>
+
+    <!-- ### PROBLEM 4 ###
+    Write a php class called Employee with methods called work() and getSalary(). Create a subclass called HRManager that overrides the work() method and adds a new method called addEmployee(). -->
+<?php
+    class Employee{
+        public function work(){
+            echo "Employee is Working </br>";
+        }
+
+        public function getSalary(){
+            echo "Employee salary is 3000 </br>";
+        }
+    }
+
+    class HRManager extends Employee{
+        public function work(){
+            echo "HR is working </br>";
+        }
+
+        public function addEmployee(){
+            echo "New Employee Added </br>";
+        }
+    }
+
+    $employee = new Employee;
+    $employee->work();
+
+    $HR = new HRManager;
+    $HR->work();
+    $HR->addEmployee();
 
 ?>
 
 
+    <!-- ### PROBLEM 5 ###
+    Write a php class known as "BankAccount" with methods called deposit() and withdraw(). Create a subclass called SavingsAccount that overrides the withdraw() method to prevent withdrawals if the account balance falls below one hundred. -->
 
+<?php
+    class BankAccount{
+        protected $balance;
+        public function __construct($amount){
+            $this->balance = $amount;
+        }
+
+        public function deposit($amount){
+            $this->balance+= $amount;
+            echo $amount."$ Deposited Successfully </br>";
+        }
+
+        public function withdrawl($amount){
+            if($amount <= $this->balance){
+                $this->balance-=$amount;
+                echo $amount."$ Withdrawn Successfully. </br>";
+            }
+            else{
+                echo "Insufficient funds. </br>";
+            }
+        }
+    }
+
+    class SavingsAccount extends BankAccount{
+ 
+        public function withdrawl($amount){
+            if($this->balance - $amount >= 100){
+                $this->balance -= $amount;
+                echo $amount."$ Withdrawn Successfully. </br>";
+            }
+            else{
+                echo "Insufficient funds </br>";
+            }
+        }
+    }
+
+    // $account = new BankAccount(100);
+    // $account->withdrawl(50);
+
+    $savingsAccount = new SavingsAccount(200);
+    $savingsAccount->withdrawl(100);
+
+?>

@@ -1,16 +1,50 @@
 @startuml
 
+' Problem 1
 class Animal{
-    makesound()
+    +makesound()
 }
 class Cat extends Animal{
-    makesound()
+    +makesound()
 }
 
+' Problem 2
 class Vehicle{
-    drive()
+    +drive()
 }
 class Car extends Vehicle{
-    drive()
+    +drive()
+}
+
+' Problem 3
+class Shape{
+    getArea()
+}
+class Rectangle extends Shape{
+    -width
+    -length
+    +_construct()
+    +getArea()
+}
+
+' Problem 4
+class Employee{
+    +work()
+    +getSalary()
+}
+class HRManager extends Employee{
+    +work()
+    +addEmployee()  
+}
+
+' Problem 5
+class BankAccount{
+    #balance
+    +_construct
+    +deposit()
+    +withdrawl()
+}
+class SavingsAccount extends BankAccount{
+    +withdrawl()
 }
 @enduml
