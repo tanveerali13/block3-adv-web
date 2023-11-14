@@ -69,8 +69,35 @@ $cat->makeSound();
 
 <!-- ### PROBLEM 3 ###
     Write a php class called Shape with a method called getArea(). Create a subclass called Rectangle that overrides the getArea() method to calculate the area of a rectangle.  -->
-<php 
-    
+<?php 
+    class Shape{
+
+
+        public function getArea(){
+            echo 'Generic Area';
+        }
+    }
+    class Rectangle extends Shape{
+
+        private $width;
+        private $length;
+
+        public function __construct($width, $length){
+            $this->width = $width;
+            $this->length = $length;
+        }
+        public function getArea(){
+            echo "Rectangle Area =". $this->width * $this->length;
+        }
+    }
+
+    $genericShape = new Shape();
+    $genericShape->getArea();
+
+    $rectangleArea = new Rectangle(5,10);
+    $rectangleArea->getArea();
+
+
 ?>
 
 
