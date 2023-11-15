@@ -47,4 +47,17 @@ class BankAccount{
 class SavingsAccount extends BankAccount{
     +withdrawl()
 }
+
+' Problem 6
+class Animal{
+    +move()
+}
+class Cheetah extends Animal{
+    +move()
+}
+
+' Problem 7
+class Person{
+    
+}
 @enduml

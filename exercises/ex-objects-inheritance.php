@@ -3,11 +3,9 @@
 
 
 
-    ### PROBLEM 6 ###
-    Write a php class called Animal with a method named move(). Create a subclass called Cheetah that overrides the move() method to run.
 
-    ### PROBLEM 7 ###
-    Write a php class known as Person with methods called getFirstName() and getLastName(). Create a subclass called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title.
+
+   
 
     ### PROBLEM 8 ###
     Write a php class called Shape with methods called getPerimeter() and getArea(). Create a subclass called Circle that overrides the getPerimeter() and getArea() methods to calculate the area and perimeter of a circle.
@@ -171,5 +169,39 @@ $cat->makeSound();
 
     $savingsAccount = new SavingsAccount(200);
     $savingsAccount->withdrawl(100);
+
+?>
+
+    <!-- ### PROBLEM 6 ###
+    Write a php class called Animal with a method named move(). Create a subclass called Cheetah that overrides the move() method to run. -->
+
+<?php
+
+    class Animall{
+        public function move(){
+            echo "Animal is moving <br>";
+        }
+    }
+    class Cheetah extends Animall{
+        public function move(){
+            echo "Run <br>";
+        }
+    }
+    
+    $animal = new Animall();
+    $animal->move();
+
+    $cheetah = new Cheetah();
+    $cheetah->move();
+    
+
+?>
+
+
+<!-- ### PROBLEM 7 ###
+    Write a php class known as Person with methods called getFirstName() and getLastName(). Create a subclass called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title. -->
+
+<?php
+
 
 ?>
