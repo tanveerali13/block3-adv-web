@@ -2,12 +2,12 @@
 
 include_once("model-animal.php");
 
-class Cat extends Animal {
+class Dog extends Animal {
     public function makeSound() {
         echo "The cat quarrels.";
     }
     public function meow() {
-        echo "meow!";
+        return "bark!";
     }
 }
 ?>
