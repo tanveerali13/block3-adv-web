@@ -58,6 +58,17 @@ class Cheetah extends Animal{
 
 ' Problem 7
 class Person{
-    
+    -firstName
+    -lastName
+    +_construct
+    +getFirstName()
+    +getLastName()
+}
+class Employee extends Person{
+    -employeeId
+    -jobTitle
+    +_construct
+    +getEmployeeId()
+    +getLastName()
 }
 @enduml

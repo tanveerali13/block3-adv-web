@@ -176,7 +176,7 @@ $cat->makeSound();
     Write a php class called Animal with a method named move(). Create a subclass called Cheetah that overrides the move() method to run. -->
 
 <?php
-
+    
     class Animall{
         public function move(){
             echo "Animal is moving <br>";
@@ -184,7 +184,7 @@ $cat->makeSound();
     }
     class Cheetah extends Animall{
         public function move(){
-            echo "Run <br>";
+            echo "Run Run <br>";
         }
     }
     
@@ -202,6 +202,50 @@ $cat->makeSound();
     Write a php class known as Person with methods called getFirstName() and getLastName(). Create a subclass called Employee that adds a new method named getEmployeeId() and overrides the getLastName() method to include the employee's job title. -->
 
 <?php
+     ini_set('display_errors', 1);
+    class Person{
+        private $firstName;
+        protected $lastName;
+
+        public function __construct($firstName, $lastName){
+            $this->firstName = $firstName;
+            $this->lastName = $lastName;
+        }
+        public function getFirstName(){
+            return $this->firstName;
+        }
+
+        public function getLastName(){
+            return $this->lastName;
+        }
+    }
+
+    class Employees extends Person{
+
+        private $employeeId;
+        private $jobTitle;
+
+        public function __construct($firstName, $lastName, $employeeId, $jobTitle){
+            parent::__construct($firstName, $lastName);
+            $this->employeeId = $employeeId;
+            $this->jobTitle = $jobTitle;
+        }
+
+        public function getEmployeeId(){
+            return $this->employeeId;
+        }
+
+        public function getJobTitle(){
+            return $this->jobTitle;
+        }
+
+        public function getLastName(){
+            return $this->lastName;
+        }
+    }
+    echo "end";
+    $employee1 = new Employees('Tanveer', 'Ali', '10', 'Web Developer');
+    echo $employee1->getJobTitle(). "Hello";
 
 
 ?>
