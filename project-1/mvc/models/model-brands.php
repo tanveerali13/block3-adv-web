@@ -1,12 +1,9 @@
 <?php
 
+include_once 'models/model-connection.php';
 
-class ConnectionObject {
-    public function __construct(public $host, public $username, public $password, public $database) {
-    }
-}
+class BrandModel{
 
-class UserModel {
     private $mysqli;
     private $connectionObject;
     public function __construct($connectionObject) {
@@ -16,6 +13,7 @@ class UserModel {
     public function connect() {
         try {
             $mysqli = new mysqli($this->connectionObject->host, $this->connectionObject->username, $this->connectionObject->password, $this->connectionObject->database);
+
             if($mysqli->connect_error) {
                 throw new Exception('Could not connect');
             }
@@ -24,11 +22,13 @@ class UserModel {
             return false;
         }
     }
-    public function selectUsers(){
+
+    public function selectBrands() {
+
         $mysqli = $this->connect();
         if($mysqli) {
-            $result = $mysqli->query("SELECT * FROM basic_demo");
-            while($row = $result->fetch_assoc()) {
+            $result = $mysqli->query("SELECT * FROM partBrands");
+            while($row = $result->fetch_assoc()){
                 $results[] = $row;
             }
             $mysqli->close();
@@ -36,7 +36,9 @@ class UserModel {
         } else {
             return false;
         }
+
     }
 }
+
 
 ?>
