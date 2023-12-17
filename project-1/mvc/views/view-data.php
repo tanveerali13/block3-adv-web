@@ -1,10 +1,10 @@
 <?php
 
-if($brands) {
-    foreach($brands as $brand) {
-        echo $brand['partBrandID'] . ' ' . $brand['partBrand']. '<br>';
+if ($brands) {
+    foreach ($brands as $brand) {
+        echo $brand['partBrandID'] . ' ' . $brand['partBrand'] . '<br>';
     }
-}else {
+} else {
     echo 'No brands found';
 }
 

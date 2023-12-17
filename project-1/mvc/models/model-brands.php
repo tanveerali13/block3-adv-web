@@ -2,33 +2,37 @@
 
 include_once 'models/model-connection.php';
 
-class BrandModel{
+class BrandModel
+{
 
     private $mysqli;
     private $connectionObject;
-    public function __construct($connectionObject) {
+    public function __construct($connectionObject)
+    {
         $this->connectionObject = $connectionObject;
     }
 
-    public function connect() {
+    public function connect()
+    {
         try {
             $mysqli = new mysqli($this->connectionObject->host, $this->connectionObject->username, $this->connectionObject->password, $this->connectionObject->database);
 
-            if($mysqli->connect_error) {
+            if ($mysqli->connect_error) {
                 throw new Exception('Could not connect');
             }
             return $mysqli;
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return false;
         }
     }
 
-    public function selectBrands() {
+    public function selectBrands()
+    {
 
         $mysqli = $this->connect();
-        if($mysqli) {
+        if ($mysqli) {
             $result = $mysqli->query("SELECT * FROM partBrands");
-            while($row = $result->fetch_assoc()){
+            while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
             $mysqli->close();
@@ -38,7 +42,19 @@ class BrandModel{
         }
 
     }
+
+    public function insertBrand($brandName)
+    {
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $mysqli->query("INSERT INTO partBrands (partBrand) VALUES ('$brandName')");
+            $mysqli->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
-
+ 
 ?>
