@@ -25,25 +25,36 @@ class Controller
     public function add()
     {
         $brandName = $_REQUEST['partBrand'];
-        if($this->model->insertBrand($brandName)){
+        if ($this->model->insertBrand($brandName)) {
             echo "Added Brand : $brandName </br>";
-        }else{
+        } else {
             echo "Could not add brand";
         }
-        $this->showBrands();
+    }
+
+    public function delete($id)
+    {
+        if ($this->model->deleteBrand($id)) {
+            $this->showBrands();
+        } else {
+            echo "Couldn't delete item";
+        }
     }
 }
+
 
 $connection1 = new ConnectionObject("localhost", "tanveer_awp", "#82wtlD27", "awp_assignment1");
 $controller = new Controller($connection1);
 
-$controller->showBrands();
+$controller->showForm();
 
-
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
     $controller->add();
-} else {
-    $controller->showForm();
-}
+    $controller->showBrands();
+} else if (isset($_GET['partBrandID'])) {
+    $controller->delete($_GET['partBrandID']);
+} 
+
+echo $_GET['partBrandID'];
 
 ?>

@@ -54,7 +54,19 @@ class BrandModel
             return false;
         }
     }
+
+    public function deleteBrand($id)
+    {   
+        $mysqli = $this->connect();
+        if ($mysqli) {
+            $mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = $id");
+            $mysqli->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
- 
+
 ?>
