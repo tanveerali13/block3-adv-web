@@ -59,7 +59,7 @@ class BrandModel
     {   
         $mysqli = $this->connect();
         if ($mysqli) {
-            $mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = $id");
+            $mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = 41");
             $mysqli->close();
             return true;
         } else {
