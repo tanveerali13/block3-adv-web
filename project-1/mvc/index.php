@@ -10,7 +10,7 @@
 
     <?php
         ini_set('display_errors', '1');
-        include_once 'controllers/controller-brands.php';
+        include __DIR__ . '/controllers/controller-brands.php';
     ?>
 </body>
 </html>

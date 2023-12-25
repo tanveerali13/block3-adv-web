@@ -1,54 +1,48 @@
 <?php
 
-include_once 'models/model-connection.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
+
 
 class BrandModel
 {
-
     private $mysqli;
-    private $connectionObject;
-    public function __construct($connectionObject)
-    {
-        $this->connectionObject = $connectionObject;
-    }
-
-    public function connect()
-    {
-        try {
-            $mysqli = new mysqli($this->connectionObject->host, $this->connectionObject->username, $this->connectionObject->password, $this->connectionObject->database);
-
-            if ($mysqli->connect_error) {
-                throw new Exception('Could not connect');
-            }
-            return $mysqli;
-        } catch (Exception $e) {
-            return false;
-        }
-    }
 
     public function selectBrands()
-    {
-
-        $mysqli = $this->connect();
-        if ($mysqli) {
-            $result = $mysqli->query("SELECT * FROM partBrands");
+    {   
+        $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+        if ($this->mysqli) {
+            $result = $this->mysqli->query("SELECT * FROM partBrands");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
-            $mysqli->close();
+            $this->mysqli->close();
             return $results;
         } else {
             return false;
         }
+    }
+
+    public function showBrands()
+    {
+        $brands = $this->selectBrands();
+        include __DIR__ . '/../views/view-brands.php';
 
     }
 
-    public function insertBrand($brandName)
+        public function showForm()
     {
-        $mysqli = $this->connect();
-        if ($mysqli) {
-            $mysqli->query("INSERT INTO partBrands (partBrand) VALUES ('$brandName')");
-            $mysqli->close();
+        include __DIR__ . '/../views/view-insertBrandsForm.php';
+    }
+
+    public function insertBrand()
+    {   
+        $brandName = $_REQUEST['partBrand'];
+        $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+        if ($this->mysqli) {
+            $this->mysqli->query("INSERT INTO partBrands (partBrand) VALUES ('$brandName')");
+            $this->mysqli->close();
             return true;
         } else {
             return false;
@@ -57,10 +51,27 @@ class BrandModel
 
     public function deleteBrand($id)
     {   
-        $mysqli = $this->connect();
-        if ($mysqli) {
-            $mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = 41");
-            $mysqli->close();
+        $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+        if ($this->mysqli) {
+            $this->mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->close();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function showEditForm($id, $brandName){
+        $this->showBrands(); 
+        include __DIR__ . '/../views/view-editBrandsForm.php';
+       
+    }
+
+    public function updateBrand($id, $brandName){
+        $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+        if ($this->mysqli) {
+            $this->mysqli->query("UPDATE partBrands SET partBrand = '$brandName' WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->close();
             return true;
         } else {
             return false;

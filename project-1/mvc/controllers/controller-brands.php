@@ -1,60 +1,41 @@
 <?php
 
-include_once 'models/model-brands.php';
-
-class Controller
-{
-    private $model;
-
-    public function __construct($connection)
-    {
-        $this->model = new BrandModel($connection);
-    }
-
-    public function showBrands()
-    {
-        $brands = $this->model->selectBrands();
-        include 'views/view-data.php';
-    }
-
-    public function showForm()
-    {
-        include 'views/view-form.php';
-    }
-
-    public function add()
-    {
-        $brandName = $_REQUEST['partBrand'];
-        if ($this->model->insertBrand($brandName)) {
-            echo "Added Brand : $brandName </br>";
-        } else {
-            echo "Could not add brand";
-        }
-    }
-
-    public function delete($id)
-    {
-        if ($this->model->deleteBrand($id)) {
-            $this->showBrands();
-        } else {
-            echo "Couldn't delete item";
-        }
-    }
-}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 
-$connection1 = new ConnectionObject("localhost", "tanveer_awp", "#82wtlD27", "awp_assignment1");
-$controller = new Controller($connection1);
+include __DIR__ . '/../models/model-brands.php';
 
-$controller->showForm();
+$brands = new BrandModel();
+$brands->showForm();
+//$brands->showBrands();
 
-if (isset($_POST['submit'])) {
-    $controller->add();
-    $controller->showBrands();
-} else if (isset($_GET['partBrandID'])) {
-    $controller->delete($_GET['partBrandID']);
+//for inserting brand
+if(isset($_POST['submit'])) {
+    $brands->insertBrand();
+    $brands->showBrands();
 } 
 
-echo $_GET['partBrandID'];
+//for deleting brand
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['partBrandID'])) {
+    $id = $_POST['partBrandID'];
+    $brands->deleteBrand($id);
+    $brands->showBrands(); 
+}
+
+//for showing edit form
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'edit' ){
+    $id = $_POST['partBrandID'];
+    $brandName = $_POST['partBrand'];
+    $brands->showEditForm($id, $brandName);   
+}
+
+//for updating brand
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
+    $id = $_POST['partBrandID'];
+    $brandName = $_POST['partBrand'];
+    $brands->updateBrand($id, $brandName);
+    $brands->showBrands();
+}
 
 ?>
