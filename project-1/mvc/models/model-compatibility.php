@@ -5,15 +5,15 @@ ini_set('display_startup_errors', 1);
 
 
 
-class BrandModel
+class CompatibilityModel
 {
     private $mysqli;
 
-    public function selectBrands()
+    public function selectCompatibilities()
     {   
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $result = $this->mysqli->query("SELECT * FROM partBrands");
+            $result = $this->mysqli->query("SELECT * FROM partCompatibility");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
@@ -24,19 +24,19 @@ class BrandModel
         }
     }
 
-    public function showBrands()
+    public function showCompatibilities()
     {
-        $brands = $this->selectBrands();
-        include __DIR__ . '/../views/view-brands.php';
+        $compatibilities = $this->selectCompatibilities();
+        include __DIR__ . '/../views/view-compatibility.php';
 
     }
 
-    public function insertBrand()
+    public function insertCompatibility()
     {   
-        $brandName = $_REQUEST['partBrand'];
+        $compatibilityName = $_REQUEST['partCompatibility'];
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("INSERT INTO partBrands (partBrand) VALUES ('$brandName')");
+            $this->mysqli->query("INSERT INTO partCompatibility (partCompatibility) VALUES ('$compatibilityName')");
             $this->mysqli->close();
             return true;
         } else {
@@ -44,11 +44,11 @@ class BrandModel
         }
     }
 
-    public function deleteBrand($id)
+    public function deleteCompatibility($id)
     {   
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->query("DELETE FROM partCompatibility WHERE partCompatibility.partCompatibilityID = '$id'");
             $this->mysqli->close();
             return true;
         } else {
@@ -56,14 +56,14 @@ class BrandModel
         }
     }
 
-    public function showEditForm($id, $brandName){ 
-        include __DIR__ . '/../views/view-brandsEditForm.php';  
+    public function showEditForm($id, $compatibilityName){ 
+        include __DIR__ . '/../views/view-compatibilityEditForm.php';  
     }
 
-    public function updateBrand($id, $brandName){
+    public function updateCompatibility($id, $compatibilityName){
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("UPDATE partBrands SET partBrand = '$brandName' WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->query("UPDATE partCompatibility SET partCompatibility = '$compatibilityName' WHERE partCompatibility.partCompatibilityID = '$id'");
             $this->mysqli->close();
             return true;
         } else {

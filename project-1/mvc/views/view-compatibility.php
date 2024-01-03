@@ -7,9 +7,9 @@
 </head>
 <body>
 
-    <h3>Insert new Brand</h3>
+    <h3>Insert new Compatibility</h3>
     <form action="" method="POST">
-        <input type="text" name="partBrand" placeholder="Brand Name">
+        <input type="text" name="partCompatibility" placeholder="Compatibility Name">
         <input type="submit" name="submit" placeholder="Submit">
         <input type="reset" name="reset" placeholder="Reset">
 
@@ -18,28 +18,28 @@
 
     <?php
         
-        if ($brands) {
+        if ($compatibilities) {
             echo '<table border="1">';
-            echo '<tr><th>ID</th><th>Brand</th><th>Action</th></tr>';
+            echo '<tr><th>ID</th><th>Compatibility</th><th>Action</th></tr>';
 
-            foreach ($brands as $brand) {
+            foreach ($compatibilities as $compatibility) {
                 echo '<tr>';
-                echo '<td>' . $brand['partBrandID'] . '</td>';
-                echo '<td>' . $brand['partBrand'] . '</td>';
+                echo '<td>' . $compatibility['partCompatibilityID'] . '</td>';
+                echo '<td>' . $compatibility['partCompatibility'] . '</td>';
                 echo '<td>';
 
                 // Edit Button
                 echo '<form action="" method="post" style="display:inline;">';
                 echo '<input type="hidden" name="action" value="edit">';
-                echo '<input type="hidden" name="partBrandID" value="' . $brand['partBrandID'] . '">';
-                echo '<input type="hidden" name="partBrand" value="' . $brand['partBrand'] . '">';
+                echo '<input type="hidden" name="partCompatibilityID" value="' . $compatibility['partCompatibilityID'] . '">';
+                echo '<input type="hidden" name="partCompatibility" value="' . $compatibility['partCompatibility'] . '">';
                 echo '<button type="submit">Edit</button>';
                 echo '</form>';
 
                 // Delete Button
                 echo '<form action="" method="post" style="display:inline;">';
                 echo '<input type="hidden" name="action" value="delete">';
-                echo '<input type="hidden" name="partBrandID" value="' . $brand['partBrandID'] . '">';
+                echo '<input type="hidden" name="partCompatibilityID" value="' . $compatibility['partCompatibilityID'] . '">';
                 echo '<button type="submit">Delete</button>';
                 echo '</form>';
 
@@ -49,7 +49,7 @@
 
             echo '</table>';
         } else {
-            echo 'No brands found';
+            echo 'No compatibilities found';
         }
 
     ?>

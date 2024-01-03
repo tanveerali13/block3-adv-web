@@ -5,15 +5,15 @@ ini_set('display_startup_errors', 1);
 
 
 
-class BrandModel
+class CategoryModel
 {
     private $mysqli;
 
-    public function selectBrands()
+    public function selectCategories()
     {   
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $result = $this->mysqli->query("SELECT * FROM partBrands");
+            $result = $this->mysqli->query("SELECT * FROM partCategories");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
@@ -24,19 +24,19 @@ class BrandModel
         }
     }
 
-    public function showBrands()
+    public function showCategories()
     {
-        $brands = $this->selectBrands();
-        include __DIR__ . '/../views/view-brands.php';
+        $categories = $this->selectCategories();
+        include __DIR__ . '/../views/view-categories.php';
 
     }
 
-    public function insertBrand()
+    public function insertCategory()
     {   
-        $brandName = $_REQUEST['partBrand'];
+        $categoryName = $_REQUEST['partCategory'];
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("INSERT INTO partBrands (partBrand) VALUES ('$brandName')");
+            $this->mysqli->query("INSERT INTO partCategories (partCategory) VALUES ('$categoryName')");
             $this->mysqli->close();
             return true;
         } else {
@@ -44,11 +44,11 @@ class BrandModel
         }
     }
 
-    public function deleteBrand($id)
+    public function deleteCategory($id)
     {   
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->query("DELETE FROM partCategories WHERE partCategories.partCategoryID = '$id'");
             $this->mysqli->close();
             return true;
         } else {
@@ -56,14 +56,15 @@ class BrandModel
         }
     }
 
-    public function showEditForm($id, $brandName){ 
-        include __DIR__ . '/../views/view-brandsEditForm.php';  
+    public function showEditForm($id, $categoryName){
+        include __DIR__ . '/../views/view-categoriesEditForm.php';
+       
     }
 
-    public function updateBrand($id, $brandName){
+    public function updateBrand($id, $categoryName){
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $this->mysqli->query("UPDATE partBrands SET partBrand = '$brandName' WHERE partBrands.partBrandID = '$id'");
+            $this->mysqli->query("UPDATE partCategories SET partCategory = '$categoryName' WHERE partCategories.partCategoryID = '$id'");
             $this->mysqli->close();
             return true;
         } else {

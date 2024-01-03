@@ -14,9 +14,9 @@ INSERT INTO `partCompatibility` (`partCompatibilityID`, `partCompatibility`) VAL
 
 -- Category Table
 
-CREATE TABLE `awp_assignment1`.`partCategories` (`partCategoryID` INT NOT NULL AUTO_INCREMENT , `PartCategory` VARCHAR(256) NOT NULL , PRIMARY KEY (`partCategoryID`)) ENGINE = InnoDB;
+CREATE TABLE `awp_assignment1`.`partCategories` (`partCategoryID` INT NOT NULL AUTO_INCREMENT , `partCategory` VARCHAR(256) NOT NULL , PRIMARY KEY (`partCategoryID`)) ENGINE = InnoDB;
 
-INSERT INTO `partCategories` (`partCategoryID`, `PartCategory`) VALUES (NULL, 'Processor'), (NULL, 'Memory'), (NULL, 'Motherboard'), (NULL, 'Graphics'), (NULL, 'Storage'), (NULL, 'Power Supply'), (NULL, 'Case'), (NULL, 'Cooling'), (NULL, 'Display'), (NULL, 'Peripheral');
+INSERT INTO `partCategories` (`partCategoryID`, `partCategory`) VALUES (NULL, 'Processor'), (NULL, 'Memory'), (NULL, 'Motherboard'), (NULL, 'Graphics'), (NULL, 'Storage'), (NULL, 'Power Supply'), (NULL, 'Case'), (NULL, 'Cooling'), (NULL, 'Display'), (NULL, 'Peripheral');
 
 
 -- PartType Table
