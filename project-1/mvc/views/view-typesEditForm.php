@@ -1,4 +1,3 @@
-
 <h3>Edit Type</h3>
         <form action="" method="post">
             
@@ -33,4 +32,4 @@
             <button type="submit">Update</button>
             <button type="cancel">Cancel</button>
         </form>
-    <br>
+        </br>

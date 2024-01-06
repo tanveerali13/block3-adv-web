@@ -1,6 +1,11 @@
 
+    <style>
+        #edit-form {
+            background-color: whitesmoke;
+        }
+    </style>
     <h3>Edit Brand</h3>
-        <form action="" method="post">
+        <form id= "edit-form" action="" method="post">
             
             <input type="hidden" name="partBrandID" value="<?php echo htmlspecialchars($id); ?>">
 

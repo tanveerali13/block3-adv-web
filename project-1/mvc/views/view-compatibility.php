@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -33,14 +34,14 @@
                 echo '<input type="hidden" name="action" value="edit">';
                 echo '<input type="hidden" name="partCompatibilityID" value="' . $compatibility['partCompatibilityID'] . '">';
                 echo '<input type="hidden" name="partCompatibility" value="' . $compatibility['partCompatibility'] . '">';
-                echo '<button type="submit">Edit</button>';
+                echo '<button id="edit-btn" type="submit">Edit</button>';
                 echo '</form>';
 
                 // Delete Button
                 echo '<form action="" method="post" style="display:inline;">';
                 echo '<input type="hidden" name="action" value="delete">';
                 echo '<input type="hidden" name="partCompatibilityID" value="' . $compatibility['partCompatibilityID'] . '">';
-                echo '<button type="submit">Delete</button>';
+                echo '<button  id="delete-btn" type="submit">Delete</button>';
                 echo '</form>';
 
                 echo '</td>';

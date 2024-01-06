@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 include __DIR__ . '/../models/model-parts.php';
 
 $parts = new PartModel();
-$parts->showParts();
+
 
 //for inserting part
 if(isset($_POST['submit'])) {
@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     
     $parts->showEditForm($id, $partName, $partType, $partBrand, $partPrice, $partStock);   
 }
+
+$parts->showParts();
 
 //for updating part
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){

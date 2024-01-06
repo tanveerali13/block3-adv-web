@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 include __DIR__ . '/../models/model-categories.php';
 
 $categories = new CategoryModel();
-$categories->showCategories();
+
 
 //for inserting brand
 if(isset($_POST['submit'])) {
@@ -32,6 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $categoryName = $_POST['partCategory'];
     $categories->showEditForm($id, $categoryName);   
 }
+
+$categories->showCategories();
 
 //for updating brand
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){

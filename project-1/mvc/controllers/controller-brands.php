@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 include __DIR__ . '/../models/model-brands.php';
 
 $brands = new BrandModel();
-$brands->showBrands();
+
 
 //for inserting brand
 if(isset($_POST['submit'])) {
@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $brandName = $_POST['partBrand'];
     $brands->showEditForm($id, $brandName);   
 }
+
+$brands->showBrands();
 
 //for updating brand
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){

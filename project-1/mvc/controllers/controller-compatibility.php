@@ -7,7 +7,7 @@ ini_set('display_startup_errors', 1);
 include __DIR__ . '/../models/model-compatibility.php';
 
 $compatibilities = new CompatibilityModel();
-$compatibilities->showCompatibilities();
+
 
 //for inserting compatibility
 if(isset($_POST['submit'])) {
@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $compatibilityName = $_POST['partCompatibility'];
     $compatibilities->showEditForm($id, $compatibilityName);   
 }
+
+$compatibilities->showCompatibilities();
 
 //for updating compatibility
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){

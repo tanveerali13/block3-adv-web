@@ -8,7 +8,7 @@
 <body>
     <h1>Database For Computer Builder</h1>
 
-  
+    <h2>Click the buttons below to get started</h2>
     <?php
         ini_set('display_errors', '1');
 
