@@ -148,16 +148,6 @@
 | Tut1       | tut1@fhbb.ch       |
 | Tut3       | tut3@fhbb.ch       |
 | Tut5       | tut5@fhbb.ch       |
-
-
-
-
-
-
-
-
-
-
-
-
+----
+----
 

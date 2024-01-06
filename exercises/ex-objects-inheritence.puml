@@ -1,0 +1,74 @@
+@startuml
+
+' Problem 1
+class Animal{
+    +makesound()
+}
+class Cat extends Animal{
+    +makesound()
+}
+
+' Problem 2
+class Vehicle{
+    +drive()
+}
+class Car extends Vehicle{
+    +drive()
+}
+
+' Problem 3
+class Shape{
+    getArea()
+}
+class Rectangle extends Shape{
+    -width
+    -length
+    +_construct()
+    +getArea()
+}
+
+' Problem 4
+class Employee{
+    +work()
+    +getSalary()
+}
+class HRManager extends Employee{
+    +work()
+    +addEmployee()  
+}
+
+' Problem 5
+class BankAccount{
+    #balance
+    +_construct
+    +deposit()
+    +withdrawl()
+}
+class SavingsAccount extends BankAccount{
+    +withdrawl()
+}
+
+' Problem 6
+class Animal{
+    +move()
+}
+class Cheetah extends Animal{
+    +move()
+}
+
+' Problem 7
+class Person{
+    -firstName
+    -lastName
+    +_construct
+    +getFirstName()
+    +getLastName()
+}
+class Employee extends Person{
+    -employeeId
+    -jobTitle
+    +_construct
+    +getEmployeeId()
+    +getLastName()
+}
+@enduml
