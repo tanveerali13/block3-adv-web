@@ -1,13 +1,111 @@
-
-h3{ 
-    margin: 20px 0px;
-    color: blue;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-td{
-    padding: 5px 10px;
+
+.container{
+    width: 1200px;
+    max-width: 90%;
+    text-align: center;
 }
 
-#edit-btn{
-    margin: 0px 3px;   
+h1{
+    margin-bottom: 50px;
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    justify-content: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    background-color: white;
+    color: #333;
+}
+
+.form {
+    min-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form h3 {
+    text-align: center;
+    color: #333;
+}
+
+.form .form-flex {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #aaa9a9;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form input[type="submit"],
+.form input[type="reset"]
+ {
+    width: 50%;
+    margin-top: 10px;
+    background-color: #308cff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form input[type="reset"]
+{
+    background-color: #6d757d;
+}
+
+.form button
+{
+    width: 50%;
+    border: 1px solid #aaa9a9;
+    border-radius: 4px;
+    padding: 11px 10px;
+    background-color: #f44336;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn{
+    margin: 0 3px;
+}
+
+select{
+    margin-bottom: 10px;
+}
+.form .buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    margin: auto;
 }

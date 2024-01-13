@@ -13,7 +13,8 @@ $categories = new CategoryModel();
 if(isset($_POST['submit'])) {
     $categories->insertCategory();
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-categories";</script>';
+    header('Location: ?page=view-categories');
+    //echo '<script>window.location.href = "?page=view-categories";</script>';
     exit();
 } 
 
@@ -22,7 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = $_POST['partCategoryID'];
     $categories->deleteCategory($id);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-categories";</script>';
+    header('Location: ?page=view-categories');
+    //echo '<script>window.location.href = "?page=view-categories";</script>';
     exit();; 
 }
 
@@ -33,16 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $categories->showEditForm($id, $categoryName);   
 }
 
-$categories->showCategories();
-
 //for updating brand
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
     $id = $_POST['partCategoryID'];
     $categoryName = $_POST['partCategory'];
     $categories->updateBrand($id, $categoryName);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-categories";</script>';
+    header('Location: ?page=view-categories');
+    //echo '<script>window.location.href = "?page=view-categories";</script>';
     exit();
 }
+
+$categories->showCategories();
 
 ?>

@@ -12,8 +12,7 @@ $brands = new BrandModel();
 //for inserting brand
 if(isset($_POST['submit'])) {
     $brands->insertBrand();
-    //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-brands";</script>';
+    header('Location: ?page=view-brands');
     exit();
 
 } 
@@ -22,8 +21,7 @@ if(isset($_POST['submit'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['partBrandID'])) {
     $id = $_POST['partBrandID'];
     $brands->deleteBrand($id);
-    //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-brands";</script>';
+    header('Location: ?page=view-brands');
     exit();; 
 }
 
@@ -34,16 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $brands->showEditForm($id, $brandName);   
 }
 
-$brands->showBrands();
+
 
 //for updating brand
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
     $id = $_POST['partBrandID'];
     $brandName = $_POST['partBrand'];
     $brands->updateBrand($id, $brandName);
-    //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-brands";</script>';
+    header('Location: ?page=view-brands');
     exit();
 }
+
+$brands->showBrands();
 
 ?>

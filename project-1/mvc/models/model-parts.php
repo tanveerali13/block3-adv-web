@@ -19,7 +19,6 @@ class PartModel
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
-            echo
             $this->mysqli->close();
             return $results;
         } else {

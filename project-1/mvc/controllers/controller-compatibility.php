@@ -13,7 +13,8 @@ $compatibilities = new CompatibilityModel();
 if(isset($_POST['submit'])) {
     $compatibilities->insertCompatibility();
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-compatibility";</script>';
+    header('Location: ?page=view-compatibility');
+    //echo '<script>window.location.href = "?page=view-compatibility";</script>';
     exit();
 
 } 
@@ -23,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = $_POST['partCompatibilityID'];
     $compatibilities->deleteCompatibility($id);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-compatibility";</script>';
+    header('Location: ?page=view-compatibility');
+    //echo '<script>window.location.href = "?page=view-compatibility";</script>';
     exit();; 
 }
 
@@ -34,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $compatibilities->showEditForm($id, $compatibilityName);   
 }
 
-$compatibilities->showCompatibilities();
+
 
 //for updating compatibility
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
@@ -42,8 +44,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $compatibilityName = $_POST['partCompatibility'];
     $compatibilities->updateCompatibility($id, $compatibilityName);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-compatibility";</script>';
+    header('Location: ?page=view-compatibility');
+    //echo '<script>window.location.href = "?page=view-compatibility";</script>';
     exit();
 }
+
+$compatibilities->showCompatibilities();
 
 ?>

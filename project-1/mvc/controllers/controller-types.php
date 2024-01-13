@@ -13,7 +13,8 @@ $types = new TypeModel();
 if(isset($_POST['submit'])) {
     $types->insertType();
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-types";</script>';
+    header('Location: ?page=view-types');
+    //echo '<script>window.location.href = "?page=view-types";</script>';
     exit();
 
 } 
@@ -23,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = $_POST['partTypeID'];
     $types->deleteType($id);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-types";</script>';
+    header('Location: ?page=view-types');
+    //echo '<script>window.location.href = "?page=view-types";</script>';
     exit();; 
 }
 
@@ -37,8 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $types->showEditForm($id, $partType, $partCompatibility, $partCategory);   
 }
 
-$types->showTypes();
-
 //for updating part
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
     $id = $_POST['partTypeID'];
@@ -48,8 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     $types->updateType($id, $partType, $partCompatibility, $partCategory);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-types";</script>';
+    header('Location: ?page=view-types');
+    //echo '<script>window.location.href = "?page=view-types";</script>';
     exit();
 }
 
+$types->showTypes();
 ?>

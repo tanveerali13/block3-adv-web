@@ -13,7 +13,8 @@ $parts = new PartModel();
 if(isset($_POST['submit'])) {
     $parts->insertPart();
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-parts";</script>';
+    header('Location: ?page=view-parts');
+    //echo '<script>window.location.href = "?page=view-parts";</script>';
     exit();
 
 } 
@@ -23,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $id = $_POST['partID'];
     $parts->deletePart($id);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-parts";</script>';
+    header('Location: ?page=view-parts');
+    //echo '<script>window.location.href = "?page=view-parts";</script>';
     exit();; 
 }
 
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $parts->showEditForm($id, $partName, $partType, $partBrand, $partPrice, $partStock);   
 }
 
-$parts->showParts();
+
 
 //for updating part
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
@@ -52,8 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
 
     $parts->updatePart($id, $partName, $partType, $partBrand, $partPrice, $partStock);
     //for reloading page without resubmission
-    echo '<script>window.location.href = "?page=view-parts";</script>';
+    header('Location: ?page=view-parts');
+    //echo '<script>window.location.href = "?page=view-parts";</script>';
     exit();
 }
+
+$parts->showParts();
 
 ?>
