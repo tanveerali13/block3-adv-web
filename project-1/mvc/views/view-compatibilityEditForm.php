@@ -5,9 +5,10 @@
             <input type="hidden" name="partCompatibilityID" value="<?php echo htmlspecialchars($id); ?>">
 
             <input type="text" id="partCompatibility" name="partCompatibility" value="<?php echo htmlspecialchars($compatibilityName); ?>" required>
-
-            <input type="hidden" name="action" value="update">
-            <input type="submit" name="submit">
-            <button type="cancel" name="cancel">Cancel</button>
+            <div class="buttons">
+                <input type="hidden" name="action" value="update">
+                <input type="submit" name="submit" value="Update">
+                <button type="cancel" name="cancel">Cancel</button>
+            </div>
         </form>
 </div>

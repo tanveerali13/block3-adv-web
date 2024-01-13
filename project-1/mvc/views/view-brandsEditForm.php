@@ -5,9 +5,10 @@
             <input type="hidden" name="partBrandID" value="<?php echo htmlspecialchars($id); ?>">
             
             <input type="text" id="partBrand" name="partBrand" value="<?php echo htmlspecialchars($brandName); ?>" required>
-            
-            <input type="hidden" name="action" value="update">
-            <input type="submit" name="submit">
-            <button type="cancel" name="cancel">Cancel</button>
+            <div class="buttons">
+                <input type="hidden" name="action" value="update">
+                <input type="submit" name="submit" value="Update">
+                <button type="cancel" name="cancel">Cancel</button>
+            </div>
         </form>
 </div>

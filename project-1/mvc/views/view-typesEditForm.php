@@ -30,7 +30,7 @@
 
                 <div class="buttons">
                     <input type="hidden" name="action" value="update">
-                    <input type="submit" name="submit">
+                    <input type="submit" name="submit" value="Update">
                     <button type="cancel" name="cancel">Cancel</button>
                 </div>
             </form>

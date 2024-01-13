@@ -27,6 +27,7 @@
                 // }
 
                 include __DIR__ . '/controllers/controller.php';
+
             ?>
         </div>
     </section>
