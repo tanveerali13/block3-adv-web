@@ -44,17 +44,31 @@ class CategoryModel
         }
     }
 
-    public function deleteCategory($id)
-    {   
+    public function deleteCategory($categoryId)
+    {
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+    
         if ($this->mysqli) {
-            $this->mysqli->query("DELETE FROM partCategories WHERE partCategories.partCategoryID = '$id'");
-            $this->mysqli->close();
-            return true;
+            try {
+                $stmt = $this->mysqli->prepare("DELETE FROM partCategories WHERE partCategoryID = ?");
+                $stmt->bind_param("i", $categoryId);
+    
+                if ($stmt->execute()) {
+                    return true;
+                } else {
+                    throw new Exception("Error deleting category.");
+                }
+            } catch (mysqli_sql_exception $e) {
+                throw new Exception("Cannot delete category due to existing constraints.");
+            } finally {
+                $stmt->close();
+                $this->mysqli->close();
+            }
         } else {
             return false;
         }
     }
+    
 
     public function showEditForm($id, $categoryName){
         include __DIR__ . '/../views/view-categoriesEditForm.php';

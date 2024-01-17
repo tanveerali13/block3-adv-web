@@ -9,23 +9,25 @@ include __DIR__ . '/../models/model-categories.php';
 $categories = new CategoryModel();
 
 
-//for inserting brand
+//for inserting category
 if(isset($_POST['submit'])) {
     $categories->insertCategory();
-    //for reloading page without resubmission
     header('Location: ?page=view-categories');
-    //echo '<script>window.location.href = "?page=view-categories";</script>';
     exit();
 } 
 
-//for deleting brand
+//for deleting category
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['partCategoryID'])) {
-    $id = $_POST['partCategoryID'];
-    $categories->deleteCategory($id);
-    //for reloading page without resubmission
-    header('Location: ?page=view-categories');
-    //echo '<script>window.location.href = "?page=view-categories";</script>';
-    exit();; 
+    try {
+        $categoryId = $_POST['partCategoryID'];
+        $categories->deleteCategory($categoryId);
+        header('Location: ?page=view-categories');
+        exit();
+    } catch (Exception $e) {
+        echo '<div class="error-msg">';
+        echo "Error: " . $e->getMessage();
+        echo '</div>';
+    }
 }
 
 //for showing edit form
@@ -35,14 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
     $categories->showEditForm($id, $categoryName);   
 }
 
-//for updating brand
+//for updating category
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'update' ){
     $id = $_POST['partCategoryID'];
     $categoryName = $_POST['partCategory'];
     $categories->updateBrand($id, $categoryName);
-    //for reloading page without resubmission
     header('Location: ?page=view-categories');
-    //echo '<script>window.location.href = "?page=view-categories";</script>';
     exit();
 }
 

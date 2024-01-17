@@ -44,17 +44,30 @@ class BrandModel
         }
     }
 
-    public function deleteBrand($id)
-    {   
-        $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
-        if ($this->mysqli) {
-            $this->mysqli->query("DELETE FROM partBrands WHERE partBrands.partBrandID = '$id'");
+public function deleteBrand($brandID)
+{
+    $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+
+    if ($this->mysqli) {
+        try {
+            $stmt = $this->mysqli->prepare("DELETE FROM partBrands WHERE partBrandID = ?");
+            $stmt->bind_param("i", $brandID);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                throw new Exception("Error deleting brand.");
+            }
+        } catch (mysqli_sql_exception $e) {
+            throw new Exception("Cannot delete brand due to existing constraints.");
+        } finally {
             $this->mysqli->close();
-            return true;
-        } else {
-            return false;
         }
+    } else {
+        return false;
     }
+}
+
 
     public function showEditForm($id, $brandName){ 
         include __DIR__ . '/../views/view-brandsEditForm.php';  

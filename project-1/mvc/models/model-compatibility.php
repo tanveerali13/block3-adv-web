@@ -44,17 +44,31 @@ class CompatibilityModel
         }
     }
 
-    public function deleteCompatibility($id)
-    {   
+    public function deleteCompatibility($compatibilityId)
+    {
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
+    
         if ($this->mysqli) {
-            $this->mysqli->query("DELETE FROM partCompatibility WHERE partCompatibility.partCompatibilityID = '$id'");
-            $this->mysqli->close();
-            return true;
+            try {
+                $stmt = $this->mysqli->prepare("DELETE FROM partCompatibility WHERE partCompatibilityID = ?");
+                $stmt->bind_param("i", $compatibilityId);
+    
+                if ($stmt->execute()) {
+                    return true;
+                } else {
+                    throw new Exception("Error deleting compatibility.");
+                }
+            } catch (mysqli_sql_exception $e) {
+                throw new Exception("Cannot delete compatibility due to existing constraints.");
+            } finally {
+                $stmt->close();
+                $this->mysqli->close();
+            }
         } else {
             return false;
         }
     }
+    
 
     public function showEditForm($id, $compatibilityName){ 
         include __DIR__ . '/../views/view-compatibilityEditForm.php';  

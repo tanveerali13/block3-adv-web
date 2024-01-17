@@ -19,10 +19,16 @@ if(isset($_POST['submit'])) {
 
 //for deleting brand
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['partBrandID'])) {
-    $id = $_POST['partBrandID'];
-    $brands->deleteBrand($id);
-    header('Location: ?page=view-brands');
-    exit();; 
+    try {
+        $id = $_POST['partBrandID'];
+        $brands->deleteBrand($id);
+        header('Location: ?page=view-brands');
+        exit();
+    } catch (Exception $e) {
+        echo '<div class="error-msg">';
+        echo "Error: " . $e->getMessage();
+        echo '</div>';
+    }
 }
 
 //for showing edit form

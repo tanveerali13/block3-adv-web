@@ -5,6 +5,7 @@
             <input type="hidden" name="partCompatibilityID" value="<?php echo htmlspecialchars($id); ?>">
 
             <input type="text" id="partCompatibility" name="partCompatibility" value="<?php echo htmlspecialchars($compatibilityName); ?>" required>
+            
             <div class="buttons">
                 <input type="hidden" name="action" value="update">
                 <input type="submit" name="submit" value="Update">
