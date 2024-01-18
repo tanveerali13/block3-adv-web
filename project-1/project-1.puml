@@ -1,0 +1,20 @@
+@startuml
+
+class Computer{
+    -cpu
+    -ram
+    -motherboard
+    -gpu
+    -storageSSD
+    -storageHDD
+    -psu
+    -case 
+    -cooler 
+    -monitor 
+    -keyboard
+    -mouse 
+    +__construct()
+    +buildComputer()
+}
+
+@enduml
