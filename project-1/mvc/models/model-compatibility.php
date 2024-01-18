@@ -13,7 +13,7 @@ class CompatibilityModel
     {   
         $this->mysqli = new mysqli("localhost", "tanveer_awp", "Cvcd317&0", "awp_assignment1");
         if ($this->mysqli) {
-            $result = $this->mysqli->query("SELECT * FROM partCompatibility");
+            $result = $this->mysqli->query("SELECT * FROM partCompatibility ORDER BY partCompatibilityID DESC");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }

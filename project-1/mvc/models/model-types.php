@@ -15,7 +15,7 @@ class TypeModel
         if ($this->mysqli) {
             $result = $this->mysqli->query("SELECT * FROM partTypes
                                             NATURAL JOIN partCompatibility
-                                            NATURAL JOIN partCategories ORDER BY partTypeID ASC");
+                                            NATURAL JOIN partCategories ORDER BY partTypeID DESC");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }

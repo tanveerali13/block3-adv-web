@@ -15,7 +15,7 @@ class PartModel
         if ($this->mysqli) {
             $result = $this->mysqli->query("SELECT * FROM parts
                                             NATURAL JOIN partBrands
-                                            NATURAL JOIN partTypes ORDER BY partID ASC");
+                                            NATURAL JOIN partTypes ORDER BY partID DESC");
             while ($row = $result->fetch_assoc()) {
                 $results[] = $row;
             }
